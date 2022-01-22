@@ -815,6 +815,17 @@ const coreData = {
 //     users: users.map(a => ({ ...a, id: a.id.toString() })),
 //     participants: participants.map(a => ({ ...a, id: a.id.toString() })),
 // }
+
+/**
+ * 
+ * @param {'participants' | 'users' | 'locations' | 'events'} key 
+ */
+const getNextId = (key)=> {
+    const arr = coreData[key];
+    const idArray = arr.map(item => item.id)
+    return Math.max(...idArray, 0) + 1;
+}
 module.exports = {
-    data: coreData
+    db: coreData,
+    getNextId,
 };
